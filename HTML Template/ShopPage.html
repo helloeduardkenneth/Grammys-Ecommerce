@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammy's Bakeshop - Shop</title>
+
+    <link rel="stylesheet" href="../assets/Grammys.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="header-section">
+        <div class="header">
+            <div class="grammys-logo">
+                <img class="logo" src="./assets/grammys-logo.png" alt="grammys-logo">
+            </div>
+            <div class="right">
+                <div class="search-container">
+                    <form action="#">
+                        <input class="search-bar" id="search-input" type="text" placeholder="Search...">
+                    </form>
+                    <i class="fa fa-search" id="search-icon"></i>
+                </div>
+                <div class="login-or-cart">
+                    <a href="./login.php">
+                        <div class="login">
+                            <i class="fa fa-user"></i>
+                            <h1 class="login-text">Login</h1>
+                        </div>
+                    </a>
+                    <div class="cart">
+                        <i class="fa fa-cart-shopping"></i>
+                        <h1 class="cart-text">Cart</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <nav class="navbar">
+                <input type="checkbox" id="toggle" onclick="toggleChecker()">
+                <label for="toggle">
+                    <i class="material-icons">menu</i>
+                </label>
+                <div class="menu">
+                    <ul class="nav-item">
+                        <li><a href="./HomePage.html">Home</a></li>
+                        <li><a class="active" href="./ShopPage.html">Shop</a></li>
+                        <li><a href="./AboutPage.html">About</a></li>
+                        <li><a href="./ContactPage.html">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>          
+    </section>
+    <div class="wrapper">
+        <nav class="all-products">
+            <div class="wrapper-heading">
+                <h1 class="text-center allproducts-heading">All Products</h1>
+            </div>
+            <div class="wrapper-nav">
+                <input type="checkbox" id="toggle-nav">
+                <label for="toggle-nav" class="nav-toggle">
+                    <i class="material-icons">arrow_forward_ios</i>
+                </label>
+                <div class="product-menu">
+                    <ul class="product-links">
+                        <li data-filter="All" class="product-link active"><a href="#">All Products</a></li>
+                        <li data-filter="Cinnamon Rolls" class="product-link"><a href="#">Cinnamon Rolls</a></li>
+                        <li data-filter="CreamPuffs" class="product-link"><a href="#">Cream Puffs</a></li>
+                        <li data-filter="Cupcakes" class="product-link"><a href="#" >Cupcakes</a></li>
+                        <li data-filter="MiniPies" class="product-link"><a href="#">Mini Pies</a></li>
+                        <li data-filter="Muffins" class="product-link"><a href="#">Muffins</a></li>
+                        <li data-filter="Tartlets" class="product-link"><a href="#">Tartlets</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+
+    <div class="sort-by-price">
+        <label for="sort-by-price-select">Sort: </label>
+        <select id="sort-by-price-select">
+            <option disabled selected class="low-to-high-price" value="low-to-high-price">Low to High Price</option>
+            <option value="low-to-high">Low to High</option>
+            <option value="high-to-low">High to Low</option>
+        </select>
+        <button id="sort-by-price-btn" class="go-btn">GO</button>
+    </div>
+    <section>
+        <div class="product-container">
+
+            <ul class="product-items">
+                <li class="product-item" data-category="MiniPies" data-price="5.00">
+                    <div class="new">NEW</div>
+                    <img src="../images/thumbnails/apple-mini-pie-small.jpg" alt="apple-mini-pie">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Apple Mini Pie</h1>
+                        <h2>$5.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="Tartlets" data-price="10.00">
+                    <div class="new">NEW</div>
+                    <img src="../images/thumbnails/berry-kiwi-tartlets-small.jpg" alt="berry-kiwi-tartlets">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Berry and Kiwi Tartlets</h1>
+                        <h2>$10.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="Muffins" data-price="4.00">
+                    <div class="new">NEW</div>
+                    <img src="../images/thumbnails/berry-muffin-small.jpg" alt="berry-muffin">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Berry Muffin</h1>
+                        <h2>$4.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="CinnamonRolls" data-price="15.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/CinnamonRolls/blueberry-cinnamon-rolls.png" alt="blueberry-cinnamon-rolls">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Blueberry Cinnamon Roll</h1>
+                        <h2>$15.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="MiniPies" data-price="12.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/MiniPies/blueberry-mini-pie.png" alt="blueberry-mini-pie.">
+                    <div class="product-title-price">
+                        <h1>Blueberry Mini Pie</h1>
+                        <h2>$12.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="Muffins" data-price="5.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/Muffins/blueberry-muffin.png" alt="bblueberry-muffin">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Blueberry Muffin</h1>
+                        <h2>$5.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="Tartlets" data-price="4.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/Tartlets/blueberry-tartlets.png" alt="blueberry-tartlets">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Blueberry Tartlets</h1>
+                        <h2>$4.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="Muffins" data-price="15.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/Muffins/candy-muffin.png" alt="candy-muffin">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Candy Muffin</h1>
+                        <h2>$15.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="Muffins" data-price="12.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/Muffins/choco-chip-muffin.png" alt="choco-chip-muffin">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Choco Chip Muffin</h1>
+                        <h2>$12.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="CreamPuffs" data-price="15.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/CreamPuffs/choco-cream-puffs.png" alt="choco-cream-puffs">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Choco Cream Puffs</h1>
+                        <h2>$15.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="CinnamonRolls" data-price="4.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/CinnamonRolls/choco-cinnamon-rolls.png" alt="choco-cinnamon-rolls">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Chocolate Cinnamon Rolls</h1>
+                        <h2>$4.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="Cupcakes" data-price="12.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/Cupcakes/choco-cupcakes.png" alt="choco-cupcakes">
+                    <div class="product-title-price">
+                        <h1>Chocolate Cupcakes</h1>
+                        <h2>$12.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="CreamPuffs" data-price="13.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/CreamPuffs/classic-cream-puffs.png" alt="classic-cream-puffs">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Classic Cream Puffs</h1>
+                        <h2>$13.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="CinnamonRolls" data-price="4.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/CinnamonRolls/pecan-cinnamon-rolls.png" alt="pecan-cinnamon-rolls">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Pecan Cinnamon Rolls</h1>
+                        <h2>$4.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="CinnamonRolls" data-price="4.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/CinnamonRolls/raspberry-cinnamon-rolls.png" alt="raspberry-cinnamon-rolls">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Raspberry Cinnamon Rolls</h1>
+                        <h2>$4.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="CinnamonRolls" data-price="4.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/CinnamonRolls/strawberry-cinnamon-rolls.png" alt="strawberry-cinnamon-rolls">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Strawberry Cinnamon Rolls</h1>
+                        <h2>$4.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="CreamPuffs" data-price="15.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/CreamPuffs/strawberry-cream-puffs.png" alt="strawberry-cream-puffs">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Strawberry Cream Puffs</h1>
+                        <h2>$15.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="MiniPies" data-price="5.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/MiniPies/strawberry-mini-pie.png" alt="strawberry-mini-pie">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Strawberry Mini Pie</h1>
+                        <h2>$5.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="Tartlets" data-price="10.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/Tartlets/strawberry-tartlets.png" alt="strawberry-tartlets">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Strawberry Tartlets</h1>
+                        <h2>$10.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+                <li class="product-item" data-category="Cupcakes" data-price="12.00">
+                    <div class="new">NEW</div>
+                    <img src="./assets/AllProducts/Cupcakes/vanilla-cupcakes.png" alt="vanilla-cupcakes">
+                    <div class="product-title-price">
+                        <h1 class="product-name">Vanilla Cupcakes</h1>
+                        <h2>$12.00</h2>
+                    </div>
+                    <a class="product-btn" href="">View product</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="./assets/grammys-logo.png" alt="">
+                <div class="footer-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Shop</a>
+                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-socialmedia">
+                    <a href="#"><img class="footer-fb" src="./assets/SocialMediaIcon/facebook-icon.png" alt="facebook-icon"></a>
+                    <a href=""><img class="footer-ig" src="./assets/SocialMediaIcon/instagram-icon.png" alt="instagram-icon"></a>
+                </div>
+                <p class="copyright">© Copyright 2023 Marlene Baloyo. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="./Scripts/Search.js"></script>
+    
+    <script src="https://kit.fontawesome.com/80e0f4e3cb.js"></script>
+</body>
+</html>

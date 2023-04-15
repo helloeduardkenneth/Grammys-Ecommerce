@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammy's Bakeshop - Home</title>
+
+    <link rel="stylesheet" href="Grammys.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <section class="header-section">
+        <div class="header">
+            <div class="grammys-logo">
+                <img class="logo" src="./assets/grammys-logo.png" alt="grammys-logo">
+            </div>
+            <div class="right">
+                <div class="search-container">
+                    <form action="#">
+                        <input class="search-bar" id="search-input" type="text" placeholder="Search...">
+                    </form>
+                    <i class="fa fa-search" id="search-icon"></i>
+                </div>
+                <div class="login-or-cart">
+                    <a href="./login.php">
+                        <div class="login">
+                            <i class="fa fa-user"></i>
+                            <h1 class="login-text">Login</h1>
+                        </div>
+                    </a>
+                    <div class="cart">
+                        <i class="fa fa-cart-shopping"></i>
+                        <h1 class="cart-text">Cart</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <nav class="navbar">
+                <input type="checkbox" id="toggle" onclick="toggleChecker()">
+                <label for="toggle">
+                    <i class="material-icons">menu</i>
+                </label>
+                <div class="menu">
+                    <ul class="nav-item">
+                        <li><a href="./HomePage.html">Home</a></li>
+                        <li><a class="active" href="./ShopPage.html">Shop</a></li>
+                        <li><a href="./AboutPage.html">About</a></li>
+                        <li><a href="./ContactPage.html">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>          
+    </section>
+    <section id="hero-section">
+        <div class="container">
+            <div class="hero-details">
+                <h1 class="hero-heading">Indulge in our freshly baked goodies-straight from Grammy's oven!</h1>
+                <a class="shop-button" href="#">Shop</a>
+            </div>
+        </div>
+    </section>
+    <div class="all-products-empty"></div>
+    <section class="featured-section">
+        <div class="featured-container">
+            <h1 class="text-center">Featured Products</h1>
+            <div class="featured-items">
+                <div class="featured-item">
+                    <div class="new">NEW</div>
+                    <img src="./assets/FeaturedProducts/vanilla-cupcakes.png" alt="vanilla-cupcakes">
+                    <div class="featured-title-price">
+                        <h1>Vanilla Cupcakes</h1>
+                        <h2>$12.00</h2>
+                    </div>
+                    <a class="featured-btn" href="">View product</a>
+                </div>
+                <div class="featured-item">
+                    <div class="new">NEW</div>
+                    <img src="./assets/FeaturedProducts/blueberry-mini-pie.png" alt="blueberry-mini-pie">
+                    <div class="featured-title-price">
+                        <h1>Blueberry Mini Pie</h1>
+                        <h2>$5.00</h2>
+                    </div>
+                    <a class="featured-btn" href="">View product</a>
+                </div>
+                <div class="featured-item">
+                    <div class="new">NEW</div>
+                    <img src="./assets/FeaturedProducts/candy-muffin.png" alt="candy-muffin">
+                    <div class="featured-title-price">
+                        <h1>Candy Muffin</h1>
+                        <h2>$4.00</h2>
+                    </div>
+                    <a class="featured-btn" href="">View product</a>
+                </div>
+                <div class="featured-item">
+                    <div class="new">NEW</div>
+                    <img src="./assets/FeaturedProducts/strawberry-cream-puffs.png" alt="strawberry-cream-puffs">
+                    <div class="featured-title-price">
+                        <h1>Strawberry Cream Puffs</h1>
+                        <h2>$15.00</h2>
+                    </div>
+                    <a class="featured-btn" href="">View product</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="shop-by-category-section">
+        <div class="shop-by-category-container">
+            <h1 class="text-center">Shop by category</h1>
+            <div class="shop-by-categories">
+                <div class="category">
+                    <img class="category-image"src="./assets/ShopByCategory/mini-pies.png" alt="mini-pies">
+                    <h1 class="category-title">Mini Pies</h1>
+                </div>
+                <div class="category">
+                    <img class="category-image" src="./assets/ShopByCategory/cream-puffs.png" alt="cream-puffs">
+                    <h1 class="category-title">Cream Puffs</h1>
+                </div>
+                <div class="category">
+                    <a href="./ShopPage.html"><img class="category-image" src="./assets/ShopByCategory/muffins.png" alt="muffins"></a>
+                    <h1 class="category-title">Muffins</h1>
+                </div>
+                <div class="category">
+                    <img class="category-image" src="./assets/ShopByCategory/cupcakes.png" alt="cupcakes">
+                    <h1 class="category-title">Cupcakes</h1>
+                </div>
+                <div class="category">
+                    <img class="category-image" src="./assets/ShopByCategory/tarlets.png" alt="tarlets">
+                    <h1 class="category-title">Tartlets</h1>
+                </div>
+                <div class="category">
+                    <img class="category-image" src="./assets/ShopByCategory/cinnamon-rolls.png" alt="cinnamon-rolls">
+                    <h1 class="category-title">Cinnamon Rolls</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="./assets/grammys-logo.png" alt="">
+                <div class="footer-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Shop</a>
+                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-socialmedia">
+                    <a href="#"><img class="footer-fb" src="./assets/SocialMediaIcon/facebook-icon.png" alt="facebook-icon"></a>
+                    <a href=""><img class="footer-ig" src="./assets/SocialMediaIcon/instagram-icon.png" alt="instagram-icon"></a>
+                </div>
+                <p class="copyright">© Copyright 2023 Marlene Baloyo. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./Scripts/Search.js"></script>
+    
+    <script src="https://kit.fontawesome.com/80e0f4e3cb.js"></script>
+    <script src="./Bootstrap/bootstrap.min.js"></script>
+    <script src="./Bootstrap/jquery.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammy's Bakeshop - Shop</title>
+
+    <link rel="stylesheet" href="Grammys.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <section class="header-section">
+        <div class="header">
+            <div class="grammys-logo">
+                <img class="logo" src="./assets/grammys-logo.png" alt="grammys-logo">
+            </div>
+            <div class="right">
+                <div class="search-container">
+                    <form action="#">
+                        <input class="search-bar" id="search-input" type="text" placeholder="Search...">
+                    </form>
+                    <i class="fa fa-search" id="search-icon"></i>
+                </div>
+                <div class="login-or-cart">
+                    <a href="./login.php">
+                        <div class="login">
+                            <i class="fa fa-user"></i>
+                            <h1 class="login-text">Login</h1>
+                        </div>
+                    </a>
+                    <div class="cart">
+                        <i class="fa fa-cart-shopping"></i>
+                        <h1 class="cart-text">Cart</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <nav class="navbar">
+                <input type="checkbox" id="toggle" onclick="toggleChecker()">
+                <label for="toggle">
+                    <i class="material-icons">menu</i>
+                </label>
+                <div class="menu">
+                    <ul class="nav-item">
+                        <li><a href="./HomePage.html">Home</a></li>
+                        <li><a class="active" href="./ShopPage.html">Shop</a></li>
+                        <li><a href="./AboutPage.html">About</a></li>
+                        <li><a href="./ContactPage.html">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>          
+    </section>
+    <div class="contact">
+        <h1 class="text-center contact-heading">Contact</h1>
+    </div>
+    <section>
+        <div>
+            <div class="contact-description">
+                <div class="contact-message">
+                    <p class="contact-subtitle">Please feel free to call 857-225-5555 for any questions or concerns or reach out to us via email at inquire@grammys.com.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="./assets/grammys-logo.png" alt="">
+                <div class="footer-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Shop</a>
+                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-socialmedia">
+                    <a href="#"><img class="footer-fb" src="./assets/SocialMediaIcon/facebook-icon.png" alt="facebook-icon"></a>
+                    <a href=""><img class="footer-ig" src="./assets/SocialMediaIcon/instagram-icon.png" alt="instagram-icon"></a>
+                </div>
+                <p class="copyright">© Copyright 2023 Marlene Baloyo. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="./Scripts/Search.js"></script>
+    
+    <script src="https://kit.fontawesome.com/80e0f4e3cb.js"></script>
+    <script src="./Bootstrap/bootstrap.min.js"></script>
+    <script src="./Bootstrap/jquery.min.js"></script>
+</body>
+</html>
