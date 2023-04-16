@@ -24,10 +24,8 @@ if(isset($_POST['submit'])){
    $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
 
    $select_user = $link->prepare("SELECT * FROM users WHERE email = ? OR number = ?");
-   $select_user->bind_param("ss", $email, $number);
-   $select_user->execute();
-   $select_user->store_result();
-   $row_count = $select_user->num_rows;
+   $select_user->execute([$email, $number]);
+   $row_count = $select_user->rowCount();
 
    if($row_count > 0){
       $message[] = 'email or number already exists!';
@@ -36,16 +34,12 @@ if(isset($_POST['submit'])){
          $message[] = 'confirm password not matched!';
       }else{
          $insert_user = $link->prepare("INSERT INTO `users`(name, email, number, password) VALUES(?,?,?,?)");
-         $insert_user->bind_param("ssss", $name, $email, $number, $cpass);
-         $insert_user->execute();
+         $insert_user->execute([$name, $email, $number, $cpass]);
          $select_user = $link->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
-         $select_user->bind_param("ss", $email, $pass);
-         $select_user->execute();
-         $select_user->store_result();
-         $row_count = $select_user->num_rows;
+         $select_user->execute([$email, $pass]);
+         $row_count = $select_user->rowCount();
          if($row_count > 0){
-            $select_user->bind_result($id);
-            $select_user->fetch();
+            $id = $select_user->fetchColumn();
             $_SESSION['user_id'] = $id;
             header('location: login.php');
          }
@@ -53,6 +47,7 @@ if(isset($_POST['submit'])){
    }
 }
 ?>
+
 
 
 

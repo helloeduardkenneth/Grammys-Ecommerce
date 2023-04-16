@@ -68,6 +68,7 @@ include 'components/add_cart.php';
     </div>
 
 <section>
+
     <div class="product-container">
     <?php
 
@@ -83,7 +84,7 @@ include 'components/add_cart.php';
             <input type="hidden" name="thumbnail" value="<?= $fetch_products['thumbnail']; ?>">
             
 
-            <ul class="product-items">
+            <ul class="product-itemz">
             <a href="ProductView.php?pid=<?= $fetch_products['id']; ?>">
                 <li class="product-item" data-category="<?= $fetch_products['category']; ?>" data-price="<?= $fetch_products['price']; ?>">
                     <img src="uploaded_thumbnail/<?= $fetch_products['thumbnail']; ?>" alt="">
@@ -104,11 +105,12 @@ include 'components/add_cart.php';
             $select_products->closeCursor();
     ?>
     </div>
+
 </section>
 
     <?php include 'components/footer.php'; ?>
 
-    <script src="./Scripts/Grammys.js"></script>
+    <script src="./Scripts/Search.js"></script>
     <script src="./Scripts/Filter.js"></script>
     
     <script src="https://kit.fontawesome.com/80e0f4e3cb.js"></script>

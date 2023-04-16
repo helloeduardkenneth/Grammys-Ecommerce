@@ -12,7 +12,7 @@ if(isset($_POST['update_product'])){
     // Product Price
     $product_price = $_POST['product_price'];
  
-    //  Description
+    // Description
     $product_desc = isset($_POST['product_desc']) ? $_POST['product_desc'] : '';
 
     // Product Category
@@ -31,32 +31,34 @@ if(isset($_POST['update_product'])){
     if(empty($product_name) || empty($product_price) || empty($product_fullsize) || empty($product_thumbnail) || empty($product_desc) || empty($product_category)){
         $message[] = 'Please fill out all the form';
     } else {
+      try {
+        $stmt = $pdo->prepare("UPDATE products SET name=?, price=?, fullsize=?, thumbnail=?, description=?, category=?  WHERE id = ?");
+        $stmt->execute([$product_name, $product_price, $product_fullsize, $product_thumbnail, $product_desc, $product_category, $id]);
+        
+        // Fullsize
+        if($stmt){
+            move_uploaded_file($product_fullsize_tmp_name, $product_fullsize_folder);
+            $message[] = 'new product added successfully';
+        } else {
+            $message[] = 'could not add the product';
+        }
+        
+        // Thumbnail
+        if($stmt){
+            move_uploaded_file($product_thumbnail_tmp_name, $product_thumbnail_folder);
+            $message[] = 'new product added successfully';
+        } else {
+            $message[] = 'could not add the product';
+        }
 
-      $update_data = "UPDATE products SET name='$product_name', price='$product_price', fullsize='$product_fullsize', thumbnail='$product_thumbnail', description='$product_desc', category='$product_category'  WHERE id = '$id'";
-      $upload = mysqli_query($conn, $update_data);
-
-     //   Fullsize
- 
-     if($upload){
-        move_uploaded_file($product_fullsize_tmp_name, $product_fullsize_folder);
-        $message[] = 'new product added successfully';
-    } else {
-        $message[] = 'could not add the product';
-    }
-
-    //   Thumbnail
-
-    if($upload){
-        move_uploaded_file($product_thumbnail_tmp_name, $product_thumbnail_folder);
-        $message[] = 'new product added successfully';
-    } else {
-        $message[] = 'could not add the product';
-    }
-
+      } catch(PDOException $e) {
+          $message[] = 'Error: ' . $e->getMessage();
+      }
    }
 };
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +85,7 @@ if(isset($_POST['update_product'])){
 
    <?php
       
-      $select = mysqli_query($conn, "SELECT * FROM products WHERE id = '$id'");
+      $select = mysqli_query($link, "SELECT * FROM products WHERE id = '$id'");
       while($row = mysqli_fetch_assoc($select)){
 
    ?>
