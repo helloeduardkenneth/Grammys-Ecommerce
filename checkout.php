@@ -1,17 +1,3 @@
-<?php
-
-include 'components/config.php';
-
-session_start();
-
-if(isset($_SESSION['user_id'])){
-   $user_id = $_SESSION['user_id'];
-}else{
-   $user_id = '';
-   header('location:home.php');
-};
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -95,6 +81,22 @@ if(isset($_SESSION['user_id'])){
         }   
     }
     </style>
+
+<?php
+
+include 'components/config.php';
+
+session_start();
+
+if(isset($_SESSION['user_id'])){
+   $user_id = $_SESSION['user_id'];
+}else{
+   $user_id = '';
+   header('location:home.php');
+};
+
+?>
+
    
 <!-- header section starts  -->
 <?php include 'components/user_header.php'; ?>
@@ -107,8 +109,11 @@ try {
     $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Prepare the statement
-    $stmt = $link->prepare("INSERT INTO orders (user_id, name, quantity, price, grand_total)
-                            SELECT user_id, name, quantity, price, grand_total FROM cart");
+    $stmt = $link->prepare("INSERT into orders(user_id, name, quantity, price, grand_total)
+    SELECT user_id,name, quantity, price, (select SUM(quantity * price) as grand_total from cart) as grand_total FROM cart where user_id = ");
+
+    $stmt = $link->prepare("DELETE from cart where user_id = $user_id");
+
 
     // Execute the statement
     $stmt->execute();
