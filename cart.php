@@ -26,13 +26,6 @@ if(isset($_POST['delete'])){
    $message[] = 'Cart Item Deleted';
 }
 
-if(isset($_POST['delete_all'])){
-   $delete_cart_item = $link->prepare("DELETE FROM `cart` WHERE user_id = ?");
-   $delete_cart_item->execute([$user_id]);
-   // header('location:cart.php');
-   $message[] = 'Deleted All from Cart';
-}
-
 if(isset($_POST['update_qty'])){
    $cart_id = $_POST['cart_id'];
    $qty = $_POST['qty'];
@@ -266,60 +259,64 @@ $grand_total = 0;
 
    <div class="box-container">
 
-      <?php
-         $grand_total = 0;
-         $select_cart = $link->prepare("SELECT * FROM `cart` WHERE user_id = ?");
-         $select_cart->execute([$user_id]);
-         if($select_cart->rowCount() > 0){
-            while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
-      ?>
-      <form action="" method="post" class="box">
+   <?php
+     $grand_total = 0;
 
-        <input type="hidden" name="cart_id" value="<?= $fetch_cart['id']; ?>">
+    if(isset($grand_total)){
+        $insert_total = $link->prepare("UPDATE `cart` SET grand_total = ? WHERE user_id = ?");
+        $insert_total->execute([$grand_total, $user_id]);
+    }
 
-   
-            <div class="cart-list" data-cart-id="<?php echo $fetch_cart['id']; ?>">
-                <div class="cart-product">
-                    <img src="uploaded_fullsize/<?= $fetch_cart['fullsize']; ?>" alt="">
-                </div>
-                <div class="cart-qty-price-delete">
-                    <h1 class="product-name"><?= $fetch_cart['name']; ?></h1>
-                    <input type="number" class="qty-input" name="qty" value="<?php echo $fetch_cart['quantity']; ?>">
-                    <h1 class="price">$<?= $fetch_cart['price']; ?>.00</h1>
-                </div>
-                <button type="submit" class="fas fa-times" name="delete" onclick="return confirm('Delete this item?');"></button>
+     $select_cart = $link->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+     $select_cart->execute([$user_id]);
+     if($select_cart->rowCount() > 0){
+        while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
+            $sub_total = $fetch_cart['price'] * $fetch_cart['quantity'];
+            $grand_total += $sub_total;
+  ?>
+  <form action="" method="post" class="box">
+
+    <input type="hidden" name="cart_id" value="<?= $fetch_cart['id']; ?>">
+    <input type="hidden" name="grand_total" value="<?= $fetch_cart['grand_total']; ?>">
+
+
+        <div class="cart-list" data-cart-id="<?php echo $fetch_cart['id']; ?>">
+            <div class="cart-product">
+                <img src="uploaded_fullsize/<?= $fetch_cart['fullsize']; ?>" alt="">
             </div>
-            
-        </form>
-        <?php 
-                $sub_total = $fetch_cart['price'] * $fetch_cart['quantity'];
-                $grand_total += $sub_total;
-            } 
-        ?>
-        
-        <div class="cart-divider"></div>
-        <div class="cart-computing">
-            <div class="sub-total">
-                <div>Subtotal</div>
-                <div><strong>$<?= $grand_total ?></strong></div>
+            <div class="cart-qty-price-delete">
+                <h1 class="product-name"><?= $fetch_cart['name']; ?></h1>
+                <input type="number" class="qty-input" name="qty" value="<?php echo $fetch_cart['quantity']; ?>" onchange="this.form.submit()" class="quantity">
+                <h1 class="price">$<?= $fetch_cart['price']; ?>.00</h1>
             </div>
-            <div class="total">Total<span><strong>$<?= $grand_total ?></strong></span> </div>
-            <div class="cart-btn">
-                <a class="proceed-checkout" href="checkout.php">Proceed to checkout</a>
-                <a class="continue-shopping" href="shop.php">Continue Shopping</a>
-            </div>
+            <button type="submit" class="fas fa-times" name="delete" onclick="return confirm('Delete this item?');"></button>
         </div>
         
-        <?php } else { ?>
-
-        <div class="empty">
-            <p class="text-center cart-empty">Your cart is empty.</p>
+    </form>
+    <?php } ?>
+    
+    <div class="cart-divider"></div>
+    <div class="cart-computing">
+        <div class="sub-total">
+            <div>Subtotal</div>
+            <div><strong>$<?= $grand_total ?></strong></div>
+        </div>
+        <div class="total" name="grand_total" id="total">Total<span><strong>$<?= $grand_total ?></strong></span> </div>
+        <div class="cart-btn">
+            <a class="proceed-checkout" href="checkout.php">Proceed to checkout</a>
             <a class="continue-shopping" href="shop.php">Continue Shopping</a>
         </div>
-        
-        <?php } ?>
-        
     </div>
+                                                                                                                                                                                                                    
+    <?php } else { ?>
+
+    <div class="empty">
+        <p class="text-center cart-empty">Your cart is empty.</p>
+        <a class="continue-shopping" href="shop.php">Continue Shopping</a>
+    </div>
+    <?php } ?>
+</div>
+
 </section>
 <!-- shopping cart section ends -->
 
@@ -329,6 +326,7 @@ $grand_total = 0;
 
 <!-- custom js file link  -->
 <script src="./Scripts/Search.js"></script>
+<script src="./Scripts/Grammy.js"></script>
 <script src="https://kit.fontawesome.com/80e0f4e3cb.js"></script>
 
 </body>

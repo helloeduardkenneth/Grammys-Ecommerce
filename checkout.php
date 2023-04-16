@@ -100,6 +100,32 @@ if(isset($_SESSION['user_id'])){
 <?php include 'components/user_header.php'; ?>
 <!-- header section ends -->
 
+<?php
+
+try {
+    // set the PDO error mode to exception
+    $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Prepare the statement
+    $stmt = $link->prepare("INSERT INTO orders (user_id, name, quantity, price, grand_total)
+                            SELECT user_id, name, quantity, price, grand_total FROM cart");
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Print success message
+    $message[] = "Your order has been placed successfully";
+} catch(PDOException $e) {
+    // Print error message
+    echo "Error: " . $e->getMessage();
+}
+// Close the database connection
+$link = null;
+
+?>
+
+
+
 <section>
     <div class="checkout">
         <h1 class="text-center checkout-heading">Checkout</h1>
