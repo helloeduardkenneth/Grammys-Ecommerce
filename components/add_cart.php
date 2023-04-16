@@ -2,12 +2,17 @@
 
 if(isset($_POST['add_to_cart'])){
 
+
+
+
    if($user_id == ''){
       header('location: login.php');
    } else {
 
       $pid = $_POST['pid'];
       $pid = filter_var($pid, FILTER_SANITIZE_STRING);
+      $_SESSION['cart'][] = $pid;
+
       $name = $_POST['name'];
       $name = filter_var($name, FILTER_SANITIZE_STRING);
       $price = $_POST['price'];

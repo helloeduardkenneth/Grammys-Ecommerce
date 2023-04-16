@@ -600,19 +600,13 @@ a {
         font-family: var(--font-family);
         display: flex;
         flex-wrap: wrap;
-        padding-top: 64px;
-        justify-content: center;
-    }
-
-    .product-items {
-        display: flex;
-        flex-wrap: wrap;
         gap: 40px !important;
         padding-top: 64px;
         justify-content: center;
     }
+
     
-    .product-items .product-item {
+    li.product-item {
         position: relative;
         display: flex;
         flex-direction: column;
@@ -765,7 +759,7 @@ a {
     }
     .product-container {
         padding: 0 !important;
-        display: grid !important;
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
         grid-column-gap: 20px;

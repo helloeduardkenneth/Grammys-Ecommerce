@@ -95,7 +95,19 @@ if(isset($_SESSION['user_id'])){
    header('location:home.php');
 };
 
+// remove products from cart
+if(isset($_SESSION['cart'])){
+    foreach($_SESSION['cart'] as $product_id){
+        // remove product with $product_id from cart or do whatever you need to do
+    }
+    unset($_SESSION['cart']);
+}
+
+
+
 ?>
+
+
 
    
 <!-- header section starts  -->
@@ -110,9 +122,8 @@ try {
 
     // Prepare the statement
     $stmt = $link->prepare("INSERT into orders(user_id, name, quantity, price, grand_total)
-    SELECT user_id,name, quantity, price, (select SUM(quantity * price) as grand_total from cart) as grand_total FROM cart where user_id = ");
+    SELECT user_id,name, quantity, price, (select SUM(quantity * price) as grand_total from cart) as grand_total FROM cart where user_id = 3");
 
-    $stmt = $link->prepare("DELETE from cart where user_id = $user_id");
 
 
     // Execute the statement

@@ -42,7 +42,7 @@ include 'components/add_cart.php';
                 </label>
                 <div class="product-menu">
                     <ul class="product-links">
-                        <li data-filter="All"class="product-link active"><a href="#">All Products</a></li>
+                        <li class="product-link active"><a href="#">All Products</a></li>
                         <li data-filter="Cinnamon Rolls" class="product-link"><a href="#">Cinnamon Rolls</a></li>
                         <li data-filter="Cream Puffs" class="product-link"><a href="#">Cream Puffs</a></li>
                         <li data-filter="Cupcakes" class="product-link"><a href="#" >Cupcakes</a></li>
@@ -61,17 +61,16 @@ include 'components/add_cart.php';
         <label for="sort-by-price-select">Sort: </label>
         <select id="sort-by-price-select">
             <option disabled selected class="low-to-high-price" value="low-to-high-price">Low to High Price</option>
-            <option value="low-to-high" >Low to High</option>
+            <option value="low-to-high">Low to High</option>
             <option value="high-to-low">High to Low</option>
         </select>
-        <button id="sort-by-price-btn" class="go-btn" >GO</button>
+        <button id="sort-by-price-btn" class="go-btn">GO</button>
     </div>
 
 <section>
     <div class="product-container">
     <?php
-
-         $select_products = $link->prepare("SELECT * FROM `products`");
+         $select_products = $link->prepare("SELECT * FROM products order by price asc");
          $select_products->execute();
          if($select_products->rowCount() > 0){
             while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){

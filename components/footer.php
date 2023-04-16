@@ -1,4 +1,4 @@
-<footer class="footer-section">
+z<footer class="footer-section">
         <div class="footer-container">
             <div class="footer-left">
                 <img src="./assets/grammys-logo.png" alt="">

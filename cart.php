@@ -4,12 +4,15 @@ include 'components/config.php';
 
 session_start();
 
+
 if(isset($_SESSION['user_id'])){
    $user_id = $_SESSION['user_id'];
 } else {
    $user_id = '';
    header('location:home.php');
 };
+
+
 
 if(isset($_POST['cart_id']) && isset($_POST['qty'])){
     $cart_id = $_POST['cart_id'];
@@ -34,6 +37,8 @@ if(isset($_POST['update_qty'])){
    $update_qty->execute([$qty, $cart_id]);
    $message[] = 'Cart Quantity Updated';
 }
+
+
 
 $grand_total = 0;
 
@@ -260,25 +265,21 @@ $grand_total = 0;
    <div class="box-container">
 
    <?php
-     $grand_total = 0;
 
-    if(isset($grand_total)){
-        $insert_total = $link->prepare("UPDATE `cart` SET grand_total = ? WHERE user_id = ?");
-        $insert_total->execute([$grand_total, $user_id]);
-    }
 
-     $select_cart = $link->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+     $select_cart = $link->prepare("SELECT id, user_id, name, fullsize, quantity, price, quantity * price as grand_total FROM `cart`");
      $select_cart->execute([$user_id]);
      if($select_cart->rowCount() > 0){
         while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
             $sub_total = $fetch_cart['price'] * $fetch_cart['quantity'];
             $grand_total += $sub_total;
+            // Update grand_total in the cart table
+            $update_cart = $link->prepare("UPDATE `cart` SET total = ? WHERE id = ?");
+            $update_cart->execute([$sub_total, $fetch_cart['id']]);
   ?>
   <form action="" method="post" class="box">
 
     <input type="hidden" name="cart_id" value="<?= $fetch_cart['id']; ?>">
-    <input type="hidden" name="grand_total" value="<?= $fetch_cart['grand_total']; ?>">
-
 
         <div class="cart-list" data-cart-id="<?php echo $fetch_cart['id']; ?>">
             <div class="cart-product">
@@ -291,10 +292,9 @@ $grand_total = 0;
             </div>
             <button type="submit" class="fas fa-times" name="delete" onclick="return confirm('Delete this item?');"></button>
         </div>
-        
-    </form>
+    </form>        
     <?php } ?>
-    
+
     <div class="cart-divider"></div>
     <div class="cart-computing">
         <div class="sub-total">
@@ -307,6 +307,7 @@ $grand_total = 0;
             <a class="continue-shopping" href="shop.php">Continue Shopping</a>
         </div>
     </div>
+
                                                                                                                                                                                                                     
     <?php } else { ?>
 
@@ -315,6 +316,12 @@ $grand_total = 0;
         <a class="continue-shopping" href="shop.php">Continue Shopping</a>
     </div>
     <?php } ?>
+
+    <?php
+        if(isset($_SESSION['cart'])){
+            unset($_SESSION['cart']);
+        }
+    ?>
 </div>
 
 </section>
