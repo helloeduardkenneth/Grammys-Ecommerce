@@ -1,29 +1,4 @@
-function sortProductsByCategory(category) {
-    // Send an AJAX request to fetch the products filtered by category
-    $.ajax({
-      type: 'GET',
-      url: 'filter-products-by-category.php',
-      data: {
-        category: category
-      },
-      success: function(response) {
-        // Replace the current product container with the filtered products
-        $('.product-container').html(response);
-      }
-    });
-  }
-
-  $('.product-link').on('click', function(e) {
-    e.preventDefault();
-    var category = $(this).data('filter');
-    sortProductsByCategory(category);
-  });
-  
-  
-  
-
-
-    // Sort Price (Low - High & High - Low)
+ // Sort Price (Low - High & High - Low)
 
     function sortProductsByPrice() {
         // get the selected option value from the dropdown

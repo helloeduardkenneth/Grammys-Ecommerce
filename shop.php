@@ -108,7 +108,7 @@ include 'components/add_cart.php';
 
     <?php include 'components/footer.php'; ?>
 
-    <script src="./Scripts/Search.js"></script>
+    <script src="./Scripts/Grammys.js"></script>
     <script src="./Scripts/Filter.js"></script>
     
     <script src="https://kit.fontawesome.com/80e0f4e3cb.js"></script>
