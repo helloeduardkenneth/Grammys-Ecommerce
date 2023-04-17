@@ -196,6 +196,8 @@ if(isset($_POST['add_to_cart'])){
         </div>
     </div>
 
+    <?php include './components/featured-products.php' ?>
+
     <?php include 'components/footer.php'; ?>
 
 <script src="./Scripts/Search.js"></script>
