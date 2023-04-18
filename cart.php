@@ -12,6 +12,11 @@ if(isset($_SESSION['user_id'])){
    header('location:login.php');
 };
 
+if(isset($_POST['cart_id'])) {
+    $cart_id = $_POST['cart_id'];
+
+}
+
 
 
 if(isset($_POST['cart_id']) && isset($_POST['qty'])){
@@ -267,7 +272,7 @@ $grand_total = 0;
    <?php
 
 
-     $select_cart = $link->prepare("SELECT id, user_id, name, fullsize, quantity, price, quantity * price as grand_total FROM `cart`");
+     $select_cart = $link->prepare("SELECT id, user_id, name, fullsize, quantity, price, quantity * price as grand_total FROM `cart` WHERE user_id = ?");
      $select_cart->execute([$user_id]);
      if($select_cart->rowCount() > 0){
         while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
@@ -275,7 +280,7 @@ $grand_total = 0;
             $grand_total += $sub_total;
             // Update grand_total in the cart table
             $update_cart = $link->prepare("UPDATE `cart` SET total = ? WHERE id = ?");
-            $update_cart->execute([$sub_total, $fetch_cart['id']]);
+            $update_cart->execute([$sub_total, $fetch_cart['user_id']]);
   ?>
   <form action="" method="post" class="box">
 

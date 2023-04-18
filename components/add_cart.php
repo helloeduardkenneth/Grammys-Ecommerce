@@ -7,6 +7,8 @@ if(isset($_POST['add_to_cart'])){
       header('location: login.php');
    } else {
 
+      $user_id = $_POST['user_id'];
+      $user_id = filter_var($user_id, FILTER_SANITIZE_STRING);
       $pid = $_POST['pid'];
       $pid = filter_var($pid, FILTER_SANITIZE_STRING);
       $name = $_POST['name'];
