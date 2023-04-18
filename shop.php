@@ -61,17 +61,16 @@ include 'components/add_cart.php';
         <label for="sort-by-price-select">Sort: </label>
         <select id="sort-by-price-select">
             <option disabled selected class="low-to-high-price" value="low-to-high-price">Low to High Price</option>
-            <option value="low-to-high" >Low to High</option>
+            <option value="low-to-high">Low to High</option>
             <option value="high-to-low">High to Low</option>
         </select>
-        <button id="sort-by-price-btn" class="go-btn" >GO</button>
+        <button id="sort-by-price-btn" class="go-btn">GO</button>
     </div>
 
 <section>
 
     <div class="product-container">
     <?php
-
          $select_products = $link->prepare("SELECT * FROM `products`");
          $select_products->execute();
          if($select_products->rowCount() > 0){
@@ -84,17 +83,23 @@ include 'components/add_cart.php';
             <input type="hidden" name="thumbnail" value="<?= $fetch_products['thumbnail']; ?>">
             
 
-            <ul class="product-itemz">
+            <ul class="product-items">
+
             <a href="ProductView.php?pid=<?= $fetch_products['id']; ?>">
+
                 <li class="product-item" data-category="<?= $fetch_products['category']; ?>" data-price="<?= $fetch_products['price']; ?>">
-                    <img src="uploaded_thumbnail/<?= $fetch_products['thumbnail']; ?>" alt="">
+                   
+                        <img src="uploaded_thumbnail/<?= $fetch_products['thumbnail']; ?>" alt="">
+                
                     <div class="product-title-price">
                         <h1 class="product-name"><?= $fetch_products['name']; ?></h1>
                         <h2 ><span>$</span><?= $fetch_products['price']; ?>.00</h2>
                     </div>
                     <a class="product-btn" href="ProductView.php?pid=<?= $fetch_products['id']; ?>">View product</a>
                 </li>
-            </a>
+
+            </a>    
+
             </ul>
         </form>
     <?php 

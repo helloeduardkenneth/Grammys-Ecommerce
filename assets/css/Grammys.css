@@ -605,18 +605,11 @@ a {
         justify-content: center;
     }
 
-    /* .product-items {
-        display: flex;
-        flex-wrap: wrap;
-        padding-top: 64px;
-        justify-content: center;
-    } */
-    
-    .product-itemz .product-item {
+     .product-item {
         position: relative;
         display: flex;
         flex-direction: column;
-        text-align: center;
+        text-align: center !important;
         align-items: center !important;
 
     }
