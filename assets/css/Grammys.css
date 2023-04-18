@@ -563,7 +563,7 @@ a {
 
     .all-products {
         background-color: var(--light-violet-color);
-        width: 100%;
+
         padding: 75px 250px 25px 250px;
     }
 
@@ -610,7 +610,7 @@ a {
         display: flex;
         flex-direction: column;
         text-align: center !important;
-        align-items: center !important;
+        align-items: center !important;             
 
     }
     

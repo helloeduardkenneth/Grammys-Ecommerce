@@ -148,7 +148,7 @@ if(isset($_POST['submit'])){
 <?php include 'components/footer.php'; ?>
 
 <!-- custom js file link  -->
-<script src="./Scripts/Search.js"></script>
+<script src="./Scripts/Grammys.js"></script>
 
 <script src="https://kit.fontawesome.com/80e0f4e3cb.js"></script>
 

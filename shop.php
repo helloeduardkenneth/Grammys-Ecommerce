@@ -64,11 +64,10 @@ include 'components/add_cart.php';
             <option value="low-to-high">Low to High</option>
             <option value="high-to-low">High to Low</option>
         </select>
-        <button id="sort-by-price-btn" class="go-btn">GO</button>
+        <button id="sort-by-price-btn" class="go-btn" onclick="sortProductsByPrice()">GO</button>
     </div>
 
 <section>
-
     <div class="product-container">
     <?php
          $select_products = $link->prepare("SELECT * FROM `products`");
@@ -76,7 +75,7 @@ include 'components/add_cart.php';
          if($select_products->rowCount() > 0){
             while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
       ?>
-        <form action="" method="POST">
+        <form action="" method="POST" class="box" data-category="<?= $fetch_products['category']; ?>"  data-price="<?= $fetch_products['price']; ?>">
             <input type="hidden" name="id" value="<?= $fetch_products['id']; ?>">
             <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
             <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
@@ -87,7 +86,7 @@ include 'components/add_cart.php';
 
             <a href="ProductView.php?pid=<?= $fetch_products['id']; ?>">
 
-                <li class="product-item" data-category="<?= $fetch_products['category']; ?>" data-price="<?= $fetch_products['price']; ?>">
+                <li class="product-item">
                    
                         <img src="uploaded_thumbnail/<?= $fetch_products['thumbnail']; ?>" alt="">
                 
@@ -99,7 +98,7 @@ include 'components/add_cart.php';
                 </li>
 
             </a>    
-
+            
             </ul>
         </form>
     <?php 
@@ -110,7 +109,6 @@ include 'components/add_cart.php';
             $select_products->closeCursor();
     ?>
     </div>
-
 </section>
 
     <?php include 'components/footer.php'; ?>
