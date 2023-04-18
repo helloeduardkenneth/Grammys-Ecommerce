@@ -200,7 +200,8 @@ if(isset($_POST['add_to_cart'])){
 
     <?php include 'components/footer.php'; ?>
 
-<script src="./Scripts/Search.js"></script>
+<script src="./Scripts/Grammys.js"></script>
+
 
 <script src="https://kit.fontawesome.com/80e0f4e3cb.js"></script>
 </body>
